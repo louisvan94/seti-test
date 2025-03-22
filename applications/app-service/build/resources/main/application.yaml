@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  webflux:
+    base-path: "/api/v1"
+  application:
+    name: "SetiTest"
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: "/h2"
+  profiles:
+    include: null
+  data:
+    mongodb:
+      uri: "mongodb+srv://Cluster67370:XF9fbm5ydV1v@cluster67370.g2mlo.mongodb.net/seti_test"
+      auto-index-creation: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+routes:
+  path-mapping:
+    franchise: "/franchise"
+    branch-office: "/branch-office"
+    products: "/products"
+    api-gateway: "/api-gateway/info"
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
