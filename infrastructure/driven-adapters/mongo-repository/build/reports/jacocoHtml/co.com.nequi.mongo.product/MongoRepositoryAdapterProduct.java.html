@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MongoRepositoryAdapterProduct.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mongo-repository</a> &gt; <a href="index.source.html" class="el_package">co.com.nequi.mongo.product</a> &gt; <span class="el_source">MongoRepositoryAdapterProduct.java</span></div><h1>MongoRepositoryAdapterProduct.java</h1><pre class="source lang-java linenums">package co.com.nequi.mongo.product;
+
+import co.com.nequi.model.product.Product;
+import co.com.nequi.model.product.gateways.ProductRepository;
+import co.com.nequi.mongo.dto.ProductDTO;
+import co.com.nequi.mongo.helper.AdapterOperations;
+import org.reactivecommons.utils.ObjectMapper;
+import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
+
+@Repository
+public class MongoRepositoryAdapterProduct extends AdapterOperations&lt;Product, ProductDTO, String, MongoDBRepositoryProduct&gt; implements ProductRepository
+{
+
+    public MongoRepositoryAdapterProduct(MongoDBRepositoryProduct repository, ObjectMapper mapper) {
+<span class="nc" id="L16">        super(repository, mapper, d -&gt; mapper.map(d, Product.class));</span>
+<span class="nc" id="L17">    }</span>
+
+    @Override
+    public Mono&lt;Product&gt; saveProduct(Product product) {
+<span class="nc" id="L21">        return super.save(product);</span>
+    }
+
+    @Override
+    public Mono&lt;Void&gt; deleteProduct(String id) {
+<span class="nc" id="L26">        return super.deleteById(id);</span>
+    }
+
+    @Override
+    public Mono&lt;Product&gt; getProductById(String id) {
+<span class="nc" id="L31">        return super.findById(id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -30,7 +30,7 @@ routes:
   path-mapping:
     franchise: "/franchise"
     branch-office: "/branch-office"
-    products: "/products"
-    api-gateway: "/api-gateway/info"
+    product: "/product"
+    product-id: "/product/{id}"
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"

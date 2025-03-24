@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdapterOperations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mongo-repository</a> &gt; <a href="index.source.html" class="el_package">co.com.nequi.mongo.helper</a> &gt; <span class="el_source">AdapterOperations.java</span></div><h1>AdapterOperations.java</h1><pre class="source lang-java linenums">package co.com.nequi.mongo.helper;
+
+import org.reactivecommons.utils.ObjectMapper;
+import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.lang.reflect.ParameterizedType;
+import java.util.function.Function;
+
+import static org.springframework.data.domain.Example.of;
+
+public abstract class AdapterOperations&lt;E, D, I, R extends ReactiveCrudRepository&lt;D, I&gt; &amp; ReactiveQueryByExampleExecutor&lt;D&gt;&gt; {
+
+    protected R repository;
+    protected ObjectMapper mapper;
+    private final Class&lt;D&gt; dataClass;
+    private final Function&lt;D, E&gt; toEntityFn;
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+<span class="nc" id="L22">    protected AdapterOperations(R repository, ObjectMapper mapper, Function&lt;D, E&gt; toEntityFn) {</span>
+<span class="nc" id="L23">        this.repository = repository;</span>
+<span class="nc" id="L24">        this.mapper = mapper;</span>
+<span class="nc" id="L25">        ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();</span>
+<span class="nc" id="L26">        this.dataClass = (Class&lt;D&gt;) genericSuperclass.getActualTypeArguments()[1];</span>
+<span class="nc" id="L27">        this.toEntityFn = toEntityFn;</span>
+<span class="nc" id="L28">    }</span>
+
+    public Mono&lt;E&gt; save(E entity) {
+<span class="nc" id="L31">        return Mono.just(entity)</span>
+<span class="nc" id="L32">                .map(this::toData)</span>
+<span class="nc" id="L33">                .flatMap(this::saveData)</span>
+<span class="nc" id="L34">                .map(this::toEntity);</span>
+    }
+
+    public Flux&lt;E&gt; saveAll(Flux&lt;E&gt; entities) {
+<span class="nc" id="L38">        return doQueryMany(repository.saveAll(entities.map(this::toData)));</span>
+    }
+
+    public Mono&lt;E&gt; findById(I id) {
+<span class="nc" id="L42">        return doQuery(repository.findById(id));</span>
+    }
+
+    public Flux&lt;E&gt; findByExample(E entity) {
+<span class="nc" id="L46">        return doQueryMany(repository.findAll(of(toData(entity))));</span>
+    }
+
+    public Mono&lt;Void&gt; deleteById(I id) {
+<span class="nc" id="L50">        return repository.deleteById(id);</span>
+    }
+
+    public Flux&lt;E&gt; findAll() {
+<span class="nc" id="L54">        return doQueryMany(repository.findAll());</span>
+    }
+
+    protected Mono&lt;E&gt; doQuery(Mono&lt;D&gt; query) {
+<span class="nc" id="L58">        return query.map(this::toEntity);</span>
+    }
+
+    protected Flux&lt;E&gt; doQueryMany(Flux&lt;D&gt; query) {
+<span class="nc" id="L62">        return query.map(this::toEntity);</span>
+    }
+
+    protected Mono&lt;D&gt; saveData(D data) {
+<span class="nc" id="L66">        return repository.save(data);</span>
+    }
+
+    protected D toData(E entity) {
+<span class="nc" id="L70">        return mapper.map(entity, dataClass);</span>
+    }
+
+    protected E toEntity(D data) {
+<span class="nc" id="L74">        return toEntityFn.apply(data);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

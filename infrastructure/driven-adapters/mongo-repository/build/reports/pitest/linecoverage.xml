@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='5'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='4'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='3'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='mongoProperties(Lco/com/nequi/mongo/config/MongoDBSecret;)Lorg/springframework/boot/autoconfigure/mongo/MongoConnectionDetails;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='2'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='&lt;init&gt;()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='&lt;init&gt;()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='&lt;init&gt;()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='setup()V' number='2'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='mongoProperties(Lco/com/nequi/mongo/config/MongoDBSecret;)Lorg/springframework/boot/autoconfigure/mongo/MongoConnectionDetails;' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='&lt;init&gt;()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='mongoProperties(Lco/com/nequi/mongo/config/MongoDBSecret;)Lorg/springframework/boot/autoconfigure/mongo/MongoConnectionDetails;' number='2'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='mongoProperties(Lco/com/nequi/mongo/config/MongoDBSecret;)Lorg/springframework/boot/autoconfigure/mongo/MongoConnectionDetails;' number='3'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='setup()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='mongoProperties(Lco/com/nequi/mongo/config/MongoDBSecret;)Lorg/springframework/boot/autoconfigure/mongo/MongoConnectionDetails;' number='4'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='setup()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='testMongoProperties()V' number='6'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:testMongoProperties()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret$MongoDBSecretBuilder' method='&lt;init&gt;()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret$MongoDBSecretBuilder' method='&lt;init&gt;()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret' method='&lt;init&gt;(Ljava/lang/String;)V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='dbSecretTest()V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret' method='&lt;init&gt;(Ljava/lang/String;)V' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='dbSecretTest()V' number='2'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret' method='builder()Lco/com/nequi/mongo/config/MongoDBSecret$MongoDBSecretBuilder;' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='dbSecretTest()V' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret' method='builder()Lco/com/nequi/mongo/config/MongoDBSecret$MongoDBSecretBuilder;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='dbSecret(Ljava/lang/String;)Lco/com/nequi/mongo/config/MongoDBSecret;' number='3'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='dbSecret(Ljava/lang/String;)Lco/com/nequi/mongo/config/MongoDBSecret;' number='2'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='dbSecret(Ljava/lang/String;)Lco/com/nequi/mongo/config/MongoDBSecret;' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfigTest' method='dbSecretTest()V' number='3'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoConfig' method='dbSecret(Ljava/lang/String;)Lco/com/nequi/mongo/config/MongoDBSecret;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret' method='getUri()Ljava/lang/String;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret$MongoDBSecretBuilder' method='build()Lco/com/nequi/mongo/config/MongoDBSecret;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret$MongoDBSecretBuilder' method='build()Lco/com/nequi/mongo/config/MongoDBSecret;' number='1'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+<block classname='co.com.nequi.mongo.config.MongoDBSecret$MongoDBSecretBuilder' method='uri(Ljava/lang/String;)Lco/com/nequi/mongo/config/MongoDBSecret$MongoDBSecretBuilder;' number='0'><tests>
+<test name='co.com.nequi.mongo.config.MongoConfigTest.[engine:junit-jupiter]/[class:co.com.nequi.mongo.config.MongoConfigTest]/[method:dbSecretTest()]'/>
+</tests>
+</block>
+</coverage>

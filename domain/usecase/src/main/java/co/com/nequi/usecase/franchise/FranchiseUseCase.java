@@ -28,9 +28,7 @@ public class FranchiseUseCase {
         return productRepository.saveProduct(product);
     }
 
-    public Mono<Void>deleteProductById(String id){
-        return productRepository.deleteProduct(id);
-    }
+    public Mono<Void>deleteProductById(String id){ return productRepository.deleteProduct(id); }
 
     public Mono<Product>updateProductStock(Product product) {
         return productRepository.getProductById(product.getId())
@@ -49,7 +47,7 @@ public class FranchiseUseCase {
     }
 
     public Mono<BranchOffice>saveBranchOffice(BranchOffice branchOffice) {
-        return branchOfficeRepository.saveBranchOffice(branchOffice);
+        return branchOfficeRepository.saveBranchOffice(branchOffice.getIdFranchise(), branchOffice);
     }
 
     public Mono<BranchOffice>getBranchOfficeById(String id) {

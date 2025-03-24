@@ -4,6 +4,7 @@ import co.com.nequi.model.branchoffice.BranchOffice;
 import co.com.nequi.model.branchoffice.gateways.BranchOfficeRepository;
 import co.com.nequi.mongo.dto.BranchOfficeDTO;
 import co.com.nequi.mongo.helper.AdapterOperations;
+import co.com.nequi.mongo.helper.BranchOfficeHelper;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
@@ -17,8 +18,9 @@ public class MongoRepositoryAdapterBranchOffice extends AdapterOperations<Branch
     }
 
     @Override
-    public Mono<BranchOffice> saveBranchOffice(BranchOffice branchOffice) {
-        return super.save(branchOffice);
+    public Mono<BranchOffice> saveBranchOffice(String idFranchise, BranchOffice branchOffice) {
+        return repository.addBranchOffice(idFranchise, BranchOfficeHelper.getBranchOfficeDto(branchOffice))
+                .map(BranchOfficeHelper::getBranchOffice);
     }
 
     @Override

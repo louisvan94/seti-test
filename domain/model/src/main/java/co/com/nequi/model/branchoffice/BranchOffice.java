@@ -15,6 +15,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class BranchOffice {
     private String id;
+    private String idFranchise;
     private String name;
     private List<Product> products;
 }
