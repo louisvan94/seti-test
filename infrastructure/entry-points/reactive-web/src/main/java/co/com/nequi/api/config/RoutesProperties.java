@@ -19,4 +19,7 @@ public class RoutesProperties {
     private String productStock;
     private String productName;
     private String productMax;
+    private String franchiseId;
+    private String franchiseName;
+    private String branchOfficeName;
 }

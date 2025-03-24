@@ -25,6 +25,10 @@ public class RouterRest {
                 .DELETE(routesProperties.getProductId(), handler::deleteProductById)
                 .PUT(routesProperties.getProductStock(), handler::updateStockProduct)
                 .GET(routesProperties.getProductMax(), handler::getMaxStockProductByOffice)
+                .GET(routesProperties.getFranchiseId(), handler::getFranchiseById)
+                .PUT(routesProperties.getProductName(), handler::updateNameProduct)
+                .PUT(routesProperties.getFranchiseName(), handler::updateFranchiseName)
+                .PUT(routesProperties.getBranchOfficeName(), handler::updateBranchOfficeName)
                 .build();
     }
 }

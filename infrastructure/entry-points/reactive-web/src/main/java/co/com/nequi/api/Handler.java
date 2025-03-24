@@ -38,6 +38,14 @@ public class Handler {
     }
 
     @NonNull
+    public Mono<ServerResponse> getFranchiseById(ServerRequest serverRequest) {
+        return Mono.just(serverRequest.pathVariable(ID_FRANCHISE))
+                .flatMap(franchiseUseCase::getFranchiseById)
+                .map(FranchiseHelper::getFranchiseDto)
+                .flatMap(response -> ServerResponse.status(200).bodyValue(response));
+    }
+
+    @NonNull
     public Mono<ServerResponse> saveBranchOffice(ServerRequest serverRequest) {
 
         return serverRequest.bodyToMono(RequestBranchOfficeDTO.class)
@@ -87,12 +95,45 @@ public class Handler {
     }
 
     @NonNull
+    public Mono<ServerResponse> updateNameProduct(ServerRequest serverRequest) {
+
+        return serverRequest.bodyToMono(RequestProductDTO.class)
+                .flatMap(request -> {
+                    Product product = ProductHelper.getProduct(request.getProduct());
+                    return franchiseUseCase.updateNameProduct(request.getIdBranchOffice(), request.getIdFranchise(), product);
+                })
+                .map(ProductHelper::getProductDto)
+                .flatMap(response -> ServerResponse.status(201).bodyValue(response));
+    }
+
+    @NonNull
     public Mono<ServerResponse> getMaxStockProductByOffice(ServerRequest serverRequest) {
 
         return Mono.just(serverRequest.pathVariable(ID_FRANCHISE))
-                .flatMap(id -> franchiseUseCase.maxStockByProduct(id))
-                .doOnNext(response -> System.out.println(response.get(0).getName()))
+                .flatMap(franchiseUseCase::maxStockByProduct)
                 .flatMap(response -> ServerResponse.status(200).bodyValue(response));
+    }
+
+    @NonNull
+    public Mono<ServerResponse> updateFranchiseName(ServerRequest serverRequest) {
+
+        return serverRequest.bodyToMono(FranchiseDTO.class)
+                .map(FranchiseHelper::getFranchise)
+                .flatMap(franchiseUseCase::updateFranchiseName)
+                .map(FranchiseHelper::getFranchiseDto)
+                .flatMap(franchiseDTO -> ServerResponse.status(201).bodyValue(franchiseDTO));
+    }
+
+    @NonNull
+    public Mono<ServerResponse> updateBranchOfficeName(ServerRequest serverRequest) {
+
+        return serverRequest.bodyToMono(RequestBranchOfficeDTO.class)
+                .flatMap(requestBranchOfficeDTO -> {
+                    BranchOffice branchOffice = BranchOfficeHelper.getBranchOffice(requestBranchOfficeDTO.getBranchOffice());
+                    return franchiseUseCase.updateBranchOfficeName(branchOffice, requestBranchOfficeDTO.getIdFranchise());
+                })
+                .map(BranchOfficeHelper::getBranchOfficeDto)
+                .flatMap(branchOfficeDto -> ServerResponse.status(201).bodyValue(branchOfficeDto));
     }
 
 }
