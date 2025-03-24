@@ -6,15 +6,29 @@ import co.com.nequi.model.branchoffice.BranchOffice;
 import co.com.nequi.model.product.Product;
 import lombok.experimental.UtilityClass;
 
+import java.util.Collections;
+import java.util.Optional;
+
 @UtilityClass
 public class BranchOfficeHelper {
 
     public static BranchOffice getBranchOffice(BranchOfficeDTO branchOfficeDTO) {
-        return BranchOffice.builder().id(branchOfficeDTO.getId())
+        if (branchOfficeDTO == null) {
+            return null;
+        }
+
+        return BranchOffice.builder()
+                .id(branchOfficeDTO.getId())
                 .idFranchise(branchOfficeDTO.getIdFranchise())
                 .name(branchOfficeDTO.getName())
-                .products(branchOfficeDTO.getProducts().stream().map(BranchOfficeHelper::getProduct).toList()).build();
+                .products(Optional.ofNullable(branchOfficeDTO.getProducts())
+                        .orElse(Collections.emptyList())
+                        .stream()
+                        .map(BranchOfficeHelper::getProduct)
+                        .toList())
+                .build();
     }
+
 
     public static Product getProduct(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())

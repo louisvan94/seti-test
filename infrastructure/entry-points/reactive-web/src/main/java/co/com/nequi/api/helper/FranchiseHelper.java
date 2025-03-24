@@ -8,14 +8,28 @@ import co.com.nequi.model.franchise.Franchise;
 import co.com.nequi.model.product.Product;
 import lombok.experimental.UtilityClass;
 
+import java.util.Collections;
+import java.util.Optional;
+
 @UtilityClass
 public class FranchiseHelper {
 
     public static Franchise getFranchise(FranchiseDTO franchiseDTO) {
-        return Franchise.builder().id(franchiseDTO.getId())
+        if (franchiseDTO == null) {
+            return null;
+        }
+
+        return Franchise.builder()
+                .id(franchiseDTO.getId())
                 .name(franchiseDTO.getName())
-                .offices(franchiseDTO.getOffices().stream().map(FranchiseHelper::getBranchOffice).toList()).build();
+                .offices(Optional.ofNullable(franchiseDTO.getOffices())
+                        .orElse(Collections.emptyList())
+                        .stream()
+                        .map(FranchiseHelper::getBranchOffice)
+                        .toList())
+                .build();
     }
+
 
     public static BranchOffice getBranchOffice(BranchOfficeDTO branchOfficeDTO) {
         return BranchOffice.builder().id(branchOfficeDTO.getId())

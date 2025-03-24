@@ -47,7 +47,12 @@ public class FranchiseUseCase {
     }
 
     public Mono<BranchOffice>saveBranchOffice(BranchOffice branchOffice) {
-        return branchOfficeRepository.saveBranchOffice(branchOffice.getIdFranchise(), branchOffice);
+        return getFranchiseById(branchOffice.getIdFranchise())
+                .flatMap(franchise ->{
+                    franchise.getOffices().add(branchOffice);
+                    return saveFranchise(franchise);
+                })
+                .map(franchise -> branchOffice);
     }
 
     public Mono<BranchOffice>getBranchOfficeById(String id) {
