@@ -19,7 +19,6 @@ public class BranchOfficeHelper {
 
         return BranchOffice.builder()
                 .id(branchOfficeDTO.getId())
-                .idFranchise(branchOfficeDTO.getIdFranchise())
                 .name(branchOfficeDTO.getName())
                 .products(Optional.ofNullable(branchOfficeDTO.getProducts())
                         .orElse(Collections.emptyList())
@@ -32,7 +31,6 @@ public class BranchOfficeHelper {
 
     public static Product getProduct(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())
-                .idBranchOffice(productDTO.getIdBranchOffice())
                 .name(productDTO.getName())
                 .stock(productDTO.getStock()).build();
     }
@@ -41,7 +39,6 @@ public class BranchOfficeHelper {
         if (branchOffice == null) return null;
         return BranchOfficeDTO.builder()
                 .id(branchOffice.getId())
-                .idFranchise(branchOffice.getIdFranchise())
                 .name(branchOffice.getName())
                 .products(branchOffice.getProducts().stream()
                         .map(BranchOfficeHelper::getProductDto)
@@ -53,7 +50,6 @@ public class BranchOfficeHelper {
         if (product == null) return null;
         return ProductDTO.builder()
                 .id(product.getId())
-                .idBranchOffice(product.getIdBranchOffice())
                 .name(product.getName())
                 .stock(product.getStock())
                 .build();

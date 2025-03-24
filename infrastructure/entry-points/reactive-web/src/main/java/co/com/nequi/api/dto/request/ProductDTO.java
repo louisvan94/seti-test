@@ -13,7 +13,6 @@ import lombok.Setter;
 @Builder(toBuilder = true)
 public class ProductDTO {
     private String id;
-    private String idBranchOffice;
     private String name;
     private int stock;
 }

@@ -31,6 +31,9 @@ routes:
     franchise: "/franchise"
     branch-office: "/branch-office"
     product: "/product"
-    product-id: "/product/{id}"
+    product-id: "/product/{id-franchise}/{id-branch-office}/{id}"
+    product-stock: "/product/stock"
+    product-name: "/product/name"
+    product-max: "/product/max/{id-franchise}"
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"

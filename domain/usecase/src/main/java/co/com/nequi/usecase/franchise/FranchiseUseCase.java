@@ -1,20 +1,22 @@
 package co.com.nequi.usecase.franchise;
 
 import co.com.nequi.model.branchoffice.BranchOffice;
-import co.com.nequi.model.branchoffice.gateways.BranchOfficeRepository;
 import co.com.nequi.model.franchise.Franchise;
 import co.com.nequi.model.franchise.gateways.FranchiseRepository;
 import co.com.nequi.model.product.Product;
-import co.com.nequi.model.product.gateways.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class FranchiseUseCase {
 
-    private final ProductRepository productRepository;
     private final FranchiseRepository franchiseRepository;
-    private final BranchOfficeRepository branchOfficeRepository;
 
     public Mono<Franchise>saveFranchise(Franchise franchise) {
         return franchiseRepository.saveFranchise(franchise);
@@ -24,30 +26,8 @@ public class FranchiseUseCase {
         return franchiseRepository.getFranchiseById(id);
     }
 
-    public Mono<Product>saveProduct(Product product) {
-        return productRepository.saveProduct(product);
-    }
-
-    public Mono<Void>deleteProductById(String id){ return productRepository.deleteProduct(id); }
-
-    public Mono<Product>updateProductStock(Product product) {
-        return productRepository.getProductById(product.getId())
-                .map(p -> updateStock(p, product.getStock()))
-                .flatMap(productRepository::saveProduct);
-    }
-
-    public Mono<Product>updateProductName(Product product) {
-        return productRepository.getProductById(product.getId())
-                .map(p -> updateName(p, product.getName()))
-                .flatMap(productRepository::saveProduct);
-    }
-
-    public Mono<Product>getProductById(String id) {
-        return productRepository.getProductById(id);
-    }
-
-    public Mono<BranchOffice>saveBranchOffice(BranchOffice branchOffice) {
-        return getFranchiseById(branchOffice.getIdFranchise())
+    public Mono<BranchOffice>saveBranchOffice(BranchOffice branchOffice, String idFranchise) {
+        return getFranchiseById(idFranchise)
                 .flatMap(franchise ->{
                     franchise.getOffices().add(branchOffice);
                     return saveFranchise(franchise);
@@ -55,15 +35,77 @@ public class FranchiseUseCase {
                 .map(franchise -> branchOffice);
     }
 
-    public Mono<BranchOffice>getBranchOfficeById(String id) {
-        return branchOfficeRepository.getBranchOfficeById(id);
+    public Mono<Product> saveProduct(String idBranchOffice, String idFranchise, Product product) {
+        return getFranchiseById(idFranchise)
+                .flatMap(franchise -> {
+                    franchise.getOffices().stream()
+                            .filter(branchOffice -> branchOffice.getId().equals(idBranchOffice))
+                            .findFirst()
+                            .ifPresent(branchOffice -> {
+                                if (branchOffice.getProducts() == null) {
+                                    branchOffice.setProducts(new ArrayList<>());
+                                }
+                                branchOffice.getProducts().add(product);
+                            });
+
+                    return saveFranchise(franchise);
+                })
+                .thenReturn(product);
     }
 
-    private Product updateStock(Product product, int stock) {
-        return Product.builder().name(product.getName()).id(product.getId()).stock(stock).build();
+    public Mono<Void> deleteProduct(String idBranchOffice, String idFranchise, String idProduct) {
+        return getFranchiseById(idFranchise)
+                .flatMap(franchise -> {
+                    franchise.getOffices().stream()
+                            .filter(branchOffice -> branchOffice.getId().equals(idBranchOffice))
+                            .findFirst()
+                            .ifPresent(branchOffice -> {
+                                if (branchOffice.getProducts() != null) {
+                                    branchOffice.setProducts(branchOffice.getProducts().stream()
+                                            .filter(product -> !product.getId().equals(idProduct))
+                                            .collect(Collectors.toList()));
+                                }
+                            });
+
+                    return saveFranchise(franchise);
+                })
+                .then();
     }
 
-    private Product updateName(Product product, String name) {
-        return Product.builder().name(name).id(product.getId()).stock(product.getStock()).build();
+    public Mono<Product> updateStockProduct(String idBranchOffice, String idFranchise, Product product) {
+        return getFranchiseById(idFranchise)
+                .flatMap(franchise -> {
+                    franchise.getOffices().stream()
+                            .filter(branchOffice -> branchOffice.getId().equals(idBranchOffice))
+                            .findFirst()
+                            .ifPresent(branchOffice -> {
+                                if (branchOffice.getProducts() != null) {
+                                    branchOffice.setProducts(branchOffice.getProducts().stream()
+                                            .map(existingProduct -> existingProduct.getId().equals(product.getId())
+                                                    ? existingProduct.toBuilder().stock(product.getStock()).build()
+                                                    : existingProduct)
+                                            .collect(Collectors.toList()));
+                                }
+                            });
+
+                    return saveFranchise(franchise);
+                })
+                .thenReturn(product);
     }
+
+    public Mono<List<Product>> maxStockByProduct(String idFranchise) {
+        return getFranchiseById(idFranchise) // Obtener la franquicia por ID
+                .flatMapMany(franchise -> Flux.fromIterable(franchise.getOffices())) // Convertir las sucursales en Flux
+                .flatMap(branchOffice -> {
+                    return Flux.fromIterable(branchOffice.getProducts()) // Convertir los productos en Flux
+                            .sort(Comparator.comparingInt(Product::getStock).reversed()) // Ordenar por stock descendente
+                            .next() // Tomar el producto con más stock
+                            .map(product -> {
+                                product.setNameBranchOffice(branchOffice.getName()); // Asignar el nombre de la sucursal
+                                return product;
+                            });
+                })
+                .collectList(); // Convertir el resultado a una lista de productos
+    }
+
 }

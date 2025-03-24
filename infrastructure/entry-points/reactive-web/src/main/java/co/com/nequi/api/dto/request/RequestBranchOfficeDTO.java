@@ -1,4 +1,5 @@
-package co.com.nequi.model.product;
+package co.com.nequi.api.dto.request;
+
 import lombok.Builder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class Product {
-    private String id;
-    private String name;
-    private String nameBranchOffice;
-    private int stock;
+public class RequestBranchOfficeDTO {
+
+    private String idFranchise;
+    private BranchOfficeDTO branchOffice;
 }

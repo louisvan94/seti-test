@@ -23,6 +23,8 @@ public class RouterRest {
                 .POST(routesProperties.getBranchOffice(), handler::saveBranchOffice)
                 .POST(routesProperties.getProduct(), handler::saveProduct)
                 .DELETE(routesProperties.getProductId(), handler::deleteProductById)
+                .PUT(routesProperties.getProductStock(), handler::updateStockProduct)
+                .GET(routesProperties.getProductMax(), handler::getMaxStockProductByOffice)
                 .build();
     }
 }

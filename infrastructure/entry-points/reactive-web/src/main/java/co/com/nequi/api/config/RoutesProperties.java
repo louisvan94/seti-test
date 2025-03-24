@@ -16,4 +16,7 @@ public class RoutesProperties {
     private String branchOffice;
     private String product;
     private String productId;
+    private String productStock;
+    private String productName;
+    private String productMax;
 }

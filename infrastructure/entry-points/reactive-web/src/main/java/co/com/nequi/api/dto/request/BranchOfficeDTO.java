@@ -15,7 +15,6 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class BranchOfficeDTO {
     private String id;
-    private String idFranchise;
     private String name;
     private List<ProductDTO> products;
 }

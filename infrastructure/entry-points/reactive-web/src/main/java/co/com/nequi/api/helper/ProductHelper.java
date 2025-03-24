@@ -9,7 +9,6 @@ public class ProductHelper {
 
     public static Product getProduct(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())
-                .idBranchOffice(productDTO.getIdBranchOffice())
                 .name(productDTO.getName())
                 .stock(productDTO.getStock()).build();
     }
@@ -18,7 +17,6 @@ public class ProductHelper {
         if (product == null) return null;
         return ProductDTO.builder()
                 .id(product.getId())
-                .idBranchOffice(product.getIdBranchOffice())
                 .name(product.getName())
                 .stock(product.getStock())
                 .build();
