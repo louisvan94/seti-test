@@ -1,3 +1,13 @@
+# Como ejecutar el proyecto en local?
+
+1) Clonar el proyecto ya sea de la rama main o master
+2) Importar el proyecto en el IDE (IntelliJ preferiblemente)
+3) Configurar en el IDE run Application para la clase main. No requiere variables de entorno
+4) Una vez la aplicación SpringBoot inicialice, se crea por defecto la conexión a la base de datos MongoDB en la Nube (Atlas)
+5) Usa la colección Postman para el uso de las operaciones en local
+6) Si se requiere probar desde la versión desplegada en Nube, es importante notificarme para Iniciar la instancia de EC2 y que se pueda subir el servicio
+7) Para probar desde la versión desplegada, solo se necesita usar la colección que conecta a EC2. NOTA: para ejecutar operación de 'Franchise by id', usa esta uri http://18.233.90.242:8080/api/v1/franchise/222 para esa operación GET (quedó mal en la colección)
+
 # Proyecto Base Implementando Clean Architecture
 
 ## Antes de Iniciar
